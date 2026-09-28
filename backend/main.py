@@ -20,6 +20,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+'''
+the code below simply adds the routes inside each router to the app
+prefix automatically adds /somethign in front because each endpoint needs to be unique
+
+and tags if js for diocumentation purposes                                              
+'''
 app.include_router(patient_router, prefix="/patients", tags=["Patients"])
 app.include_router(prescription_router, prefix="/prescriptions", tags=["Prescriptions"])
 app.include_router(inventory_router, prefix="/inventory", tags=["Inventory"])

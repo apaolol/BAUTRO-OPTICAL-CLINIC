@@ -1,12 +1,12 @@
 from pydantic import BaseModel
+from typing import Optional
 
-
-class BillingCreate(BaseModel):
+class InvoiceCreate(BaseModel):
     patient_number: str
-
-    product_code: str
-    quantity: int
-
-    unit_price: float
-
-    payment_method: str
+    subtotal: float
+    discount: float
+    total: float
+    amount_paid: float
+    balance: float
+    payment_method: Optional[str] = None
+    status: Optional[str] = "Pending"

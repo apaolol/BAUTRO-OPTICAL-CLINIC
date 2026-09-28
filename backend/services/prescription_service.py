@@ -1,72 +1,38 @@
-from excel.workbook import get_workbook, save_workbook
+from sqlalchemy.orm import Session
+from models.orm import Prescription
 from utils.ids import generate_code
-from datetime import date
+import datetime
 
-SHEET = "Prescriptions"
+def get_all_prescriptions(db: Session):
+    return db.query(Prescription).all()
 
+def get_prescription(db: Session, prescription_number: str):
+    return db.query(Prescription).filter(Prescription.prescription_number == prescription_number).first()
 
-def get_all_prescriptions():
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    return rows
-
-
-def get_prescriptions_by_patient(patient_number: str):
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    if not rows:
-        return []
-    header = rows[0]
-    return [
-        dict(zip(header, row))
-        for row in rows[1:]
-        if row[1] == patient_number
-    ]
-
-
-def create_prescription(data):
-    wb = get_workbook()
-    ws = wb[SHEET]
-
-    prescription_number = generate_code("RX", ws.max_row)
-
-    ws.append([
-        prescription_number,
-        data.patient_number,
-        str(date.today()),
-
-        data.od_sphere,
-        data.od_cylinder,
-        data.od_axis,
-        data.od_add,
-
-        data.os_sphere,
-        data.os_cylinder,
-        data.os_axis,
-        data.os_add,
-
-        data.distance_pd,
-        data.near_pd,
-
-        data.right_seg_height,
-        data.left_seg_height,
-
-        data.right_pupil_height,
-        data.left_pupil_height,
-
-        data.lens_type,
-        data.lens_brand,
-        data.lens_coating,
-        data.tint,
-
-        data.frame_model,
-        data.frame_brand,
-
-        data.special_instructions,
-    ])
-
-    save_workbook(wb)
-
-    return {"prescription_number": prescription_number}
+def create_prescription(db: Session, data):
+    count = db.query(Prescription).count()
+    prescription_number = generate_code("RX", count)
+    
+    new_rx = Prescription(
+        prescription_number=prescription_number,
+        patient_number=data.patient_number,
+        date=datetime.date.today(),
+        od_sphere=data.od_sphere,
+        od_cylinder=data.od_cylinder,
+        od_axis=data.od_axis,
+        od_add=data.od_add,
+        od_pd=data.od_pd,
+        os_sphere=data.os_sphere,
+        os_cylinder=data.os_cylinder,
+        os_axis=data.os_axis,
+        os_add=data.os_add,
+        os_pd=data.os_pd,
+        lens_type=data.lens_type,
+        frame_brand=data.frame_brand,
+        frame_model=data.frame_model,
+        notes=data.notes
+    )
+    db.add(new_rx)
+    db.commit()
+    db.refresh(new_rx)
+    return {"prescription_number": new_rx.prescription_number}

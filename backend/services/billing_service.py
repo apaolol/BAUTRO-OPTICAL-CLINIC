@@ -1,58 +1,31 @@
-from excel.workbook import get_workbook, save_workbook
-from services.inventory_service import update_inventory_quantity
+from sqlalchemy.orm import Session
+from models.orm import Billing
 from utils.ids import generate_code
-from datetime import date
+import datetime
 
-SHEET = "Billing"
+def get_all_invoices(db: Session):
+    return db.query(Billing).all()
 
+def get_invoice(db: Session, invoice_number: str):
+    return db.query(Billing).filter(Billing.invoice_number == invoice_number).first()
 
-def get_all_billing():
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    return rows
-
-
-def get_billing_by_patient(patient_number: str):
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    if not rows:
-        return []
-    header = rows[0]
-    return [
-        dict(zip(header, row))
-        for row in rows[1:]
-        if row[1] == patient_number
-    ]
-
-
-def create_invoice(data):
-    wb = get_workbook()
-    ws = wb[SHEET]
-
-    invoice_number = generate_code("INV", ws.max_row)
-    total = data.quantity * data.unit_price
-
-    ws.append([
-        invoice_number,
-        data.patient_number,
-        data.product_code,
-        data.quantity,
-        data.unit_price,
-        total,
-        data.payment_method,
-        str(date.today()),
-    ])
-
-    save_workbook(wb)
-
-    # Deduct from inventory
-    update_inventory_quantity(
-        data.product_code,
-        -data.quantity,
-        "SOLD",
-        f"Invoice {invoice_number}",
+def create_invoice(db: Session, data):
+    count = db.query(Billing).count()
+    invoice_number = generate_code("INV", count)
+    
+    new_invoice = Billing(
+        invoice_number=invoice_number,
+        patient_number=data.patient_number,
+        date=datetime.date.today(),
+        subtotal=data.subtotal,
+        discount=data.discount,
+        total=data.total,
+        amount_paid=data.amount_paid,
+        balance=data.balance,
+        payment_method=data.payment_method,
+        status=data.status
     )
-
-    return {"invoice_number": invoice_number, "total": total}
+    db.add(new_invoice)
+    db.commit()
+    db.refresh(new_invoice)
+    return {"invoice_number": new_invoice.invoice_number}

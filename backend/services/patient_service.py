@@ -1,62 +1,44 @@
-from excel.workbook import get_workbook, save_workbook
+from sqlalchemy.orm import Session
+from models.orm import Patient
 from utils.ids import generate_code
-from datetime import date
+import datetime
 
-SHEET = "Patients"
+def get_all_patients(db: Session):
+    return db.query(Patient).all()
 
+def get_patient(db: Session, patient_number: str):
+    return db.query(Patient).filter(Patient.patient_number == patient_number).first()
 
-def get_all_patients():
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    return rows
-
-
-def get_patient(patient_number: str):
-    wb = get_workbook()
-    ws = wb[SHEET]
-    rows = list(ws.iter_rows(values_only=True))
-    if not rows:
-        return None
-    header = rows[0]
-    for row in rows[1:]:
-        if row[0] == patient_number:
-            return dict(zip(header, row))
-    return None
-
-
-def create_patient(data):
-    wb = get_workbook()
-    ws = wb[SHEET]
-
-    patient_number = generate_code("P", ws.max_row)
-
-    ws.append([
-        patient_number,
-        str(date.today()),       # date_created
-        data.full_name,
-        data.address,
-        data.contact_number,
-        data.date_of_birth,
-        data.age,
-        data.sex,
-        data.occupation,
-        data.emergency_contact,
-        data.chief_complaint,
-        data.medical_history,
-        data.ocular_history,
-        data.allergies,
-        data.current_medications,
-        data.visual_acuity_od,
-        data.visual_acuity_os,
-        data.bcva_od,
-        data.bcva_os,
-        data.iop,
-        data.diagnosis,
-        data.clinical_notes,
-        data.other_tests,
-    ])
-
-    save_workbook(wb)
-
-    return {"patient_number": patient_number}
+def create_patient(db: Session, data):
+    count = db.query(Patient).count()
+    patient_number = generate_code("P", count)
+    
+    new_patient = Patient(
+        patient_number=patient_number,
+        date_created=datetime.date.today(),
+        full_name=data.full_name,
+        address=data.address,
+        contact_number=data.contact_number,
+        date_of_birth=data.date_of_birth,
+        age=data.age,
+        sex=data.sex,
+        occupation=data.occupation,
+        emergency_contact=data.emergency_contact,
+        chief_complaint=data.chief_complaint,
+        medical_history=data.medical_history,
+        ocular_history=data.ocular_history,
+        allergies=data.allergies,
+        current_medications=data.current_medications,
+        visual_acuity_od=data.visual_acuity_od,
+        visual_acuity_os=data.visual_acuity_os,
+        bcva_od=data.bcva_od,
+        bcva_os=data.bcva_os,
+        iop=data.iop,
+        diagnosis=data.diagnosis,
+        clinical_notes=data.clinical_notes,
+        other_tests=data.other_tests
+    )
+    db.add(new_patient)
+    db.commit()
+    db.refresh(new_patient)
+    return {"patient_number": new_patient.patient_number}
