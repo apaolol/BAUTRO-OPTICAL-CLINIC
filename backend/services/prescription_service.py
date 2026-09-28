@@ -12,7 +12,7 @@ def get_prescription(db: Session, prescription_number: str):
 def create_prescription(db: Session, data):
     count = db.query(Prescription).count()
     prescription_number = generate_code("RX", count)
-    
+
     new_rx = Prescription(
         prescription_number=prescription_number,
         patient_number=data.patient_number,
@@ -28,9 +28,11 @@ def create_prescription(db: Session, data):
         os_add=data.os_add,
         os_pd=data.os_pd,
         lens_type=data.lens_type,
+        lens_brand=data.lens_brand,
+        lens_coating=data.lens_coating,
         frame_brand=data.frame_brand,
         frame_model=data.frame_model,
-        notes=data.notes
+        notes=data.notes,
     )
     db.add(new_rx)
     db.commit()

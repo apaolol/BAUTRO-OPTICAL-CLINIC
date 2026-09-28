@@ -55,6 +55,8 @@ class Prescription(Base):
     os_pd = Column(String, nullable=True)
     
     lens_type = Column(String, nullable=True)
+    lens_brand = Column(String, nullable=True)
+    lens_coating = Column(String, nullable=True)
     frame_brand = Column(String, nullable=True)
     frame_model = Column(String, nullable=True)
     notes = Column(Text, nullable=True)
