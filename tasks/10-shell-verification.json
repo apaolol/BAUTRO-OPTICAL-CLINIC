@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-21",
+  "task": 10,
+  "five_direct_urls_links_scripts_styles_logo_http_200": true,
+  "browser_five_page_navigation_and_refresh": true,
+  "browser_stopped_backend_error_and_start_retry_recovery": true,
+  "network_both_static_origins_get_and_put_preflight_without_credentials": true,
+  "synthetic_shared_javascript_checks": "node tasks/10-verify-shell.js passed",
+  "narrow_layout_screenshot_verified": true,
+  "desktop_explicit_viewport_visual_qa": false,
+  "database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_and_zip_crc_match": true,
+  "legacy_frontend_sources_and_preserved_entry_match_baseline": true,
+  "no_database_writes_migrations_generation_or_installs": true,
+  "limitations": [
+    "Shell only; domain workflows remain Tasks 11\u201315.",
+    "Viewport override timed out and was reset; explicit desktop visual QA pending.",
+    "No full API network regression or final acceptance."
+  ],
+  "chat_recommendation": "Keep this chat for Task 11, tasks/11-patients-frontend.md"
+}

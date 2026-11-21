@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-21",
+  "task": 11,
+  "transport": "Browser with actual FastAPI Patient router redirected to synthetic SQLite; native fetch with real CORS",
+  "all_21_form_fields_and_full_minimal_persisted_parity": true,
+  "trim_required_optional_null_numeric_age_zero_validation": true,
+  "browser_generated_code_list_refresh_search_name_code_contact_clear_no_match": true,
+  "browser_full_details_multiline_html_like_text_safe": true,
+  "browser_cancel_reset_close_details_focus": true,
+  "browser_stopped_backend_failed_save_retention_restart_retry_persistence": true,
+  "pending_duplicate_submit_guard_single_post_and_finally_recovery": true,
+  "synthetic_records_after_verification": 3,
+  "synthetic_integrity_ok": true,
+  "desktop_dimensions": {
+    "viewport": 1265,
+    "page": 1265,
+    "table": 935
+  },
+  "narrow_dimensions": {
+    "viewport": 360,
+    "page": 360,
+    "table_container": 290,
+    "table": 850
+  },
+  "patient_layout_screenshots_verified": true,
+  "viewport_reset": true,
+  "task10_shared_helper_regression_passed": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backups_and_legacy_sources_unchanged": true,
+  "no_generation_migrations_installs_or_original_database_writes": true,
+  "owned_servers_stopped": true,
+  "limitations": [
+    "Only patient workflows verified; Tasks 12\u201316 pending.",
+    "API count+1 codes and lack of idempotency unchanged.",
+    "Preview harness redirects only Patient router; never exercise other domain APIs with it."
+  ],
+  "chat_recommendation": "Keep this chat for Task 12: tasks/12-prescriptions-frontend.md"
+}

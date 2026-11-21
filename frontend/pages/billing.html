@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bautro Optical Clinic management">
+  <title>Billing | Bautro Optical Clinic</title>
+  <link rel="icon" href="../assets/bautro-optical-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../src/css/universalStyles.css">
+  <link rel="stylesheet" href="../src/css/billing.css">
+  <script defer src="../src/js/api.js"></script>
+  <script defer src="../src/js/common.js"></script>
+  <script defer src="../src/js/shell.js"></script>
+  <script defer src="../src/js/billing.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="../index.html"><img src="../assets/bautro-optical-logo.svg" alt="Bautro Optical Clinic"></a>
+      <nav aria-label="Main navigation"><a href="../index.html">Dashboard</a>
+<a href="../pages/patients.html">Patients</a>
+<a href="../pages/prescriptions.html">Prescriptions</a>
+<a href="../pages/inventory.html">Inventory</a>
+<a href="../pages/billing.html" aria-current="page">Billing</a></nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span>Billing</span><span class="muted">Admin</span></header>
+      <main id="mainContent" tabindex="-1">
+        <h1>Billing</h1>
+        <div class="billing-toolbar"><button id="addInvoiceButton" type="button">New invoice</button><button id="refreshInvoicesButton" type="button">Refresh invoices</button></div>
+        <p id="invoiceFeedback" class="status" role="status" aria-live="polite"></p>
+        <section id="invoiceFormSection" class="panel" aria-labelledby="invoiceFormHeading" hidden><h2 id="invoiceFormHeading">Create invoice</h2>
+          <form id="invoiceForm"><fieldset id="invoiceFormFields"><legend>Invoice information</legend><div class="billing-form-grid"><div class="billing-field"><label for="invoice_patient_number">Patient number (required)</label><input id="invoice_patient_number" name="patient_number" required></div><div class="billing-field"><label for="invoice_subtotal">Subtotal (PHP)</label><input id="invoice_subtotal" name="subtotal" type="number" min="0" step="0.01" value="0"></div><div class="billing-field"><label for="invoice_discount">Discount (PHP)</label><input id="invoice_discount" name="discount" type="number" min="0" step="0.01" value="0"></div><div class="billing-field"><label for="invoice_amount_paid">Amount paid (PHP)</label><input id="invoice_amount_paid" name="amount_paid" type="number" min="0" step="0.01" value="0"></div><div class="billing-field"><label for="invoice_payment_method">Payment method</label><select id="invoice_payment_method" name="payment_method"><option value="">Select</option><option>Cash</option><option>GCash</option><option>Credit Card</option><option>Debit Card</option><option>Bank Transfer</option></select></div></div></fieldset>
+          <dl class="billing-totals" aria-live="polite"><div><dt>Total</dt><dd id="invoiceTotal"></dd></div><div><dt>Balance</dt><dd id="invoiceBalance"></dd></div><div><dt>Status</dt><dd id="invoiceStatus"></dd></div></dl>
+          <p id="invoiceSaveStatus" class="status" role="status" aria-live="polite"></p><div class="billing-toolbar"><button id="saveInvoiceButton" type="submit">Create invoice</button><button id="cancelInvoiceButton" type="button">Cancel</button></div></form>
+        </section>
+        <section id="invoiceDetailsSection" class="panel" aria-labelledby="invoiceDetailsHeading" hidden><h2 id="invoiceDetailsHeading" tabindex="-1">Invoice details</h2><dl id="invoiceDetails" class="billing-details"></dl><button id="closeInvoiceDetailsButton" type="button">Close details</button></section>
+        <section class="panel" aria-labelledby="invoiceListHeading"><h2 id="invoiceListHeading">Billing records</h2>
+          <div class="billing-toolbar"><div class="billing-field"><label for="invoiceSearch">Search invoice or patient number</label><input id="invoiceSearch" type="search"></div><button id="clearInvoiceSearchButton" type="button">Clear search</button></div>
+          <p id="invoiceCount" role="status" aria-live="polite"></p><p id="invoiceListStatus" class="status" role="status" aria-live="polite">Loading invoices…</p>
+          <div class="billing-table-scroll" tabindex="0" role="region" aria-label="Billing records table"><table id="invoiceTable" hidden><caption>Invoices</caption><thead><tr><th scope="col">Invoice #</th><th scope="col">Patient #</th><th scope="col">Date</th><th scope="col">Total</th><th scope="col">Paid</th><th scope="col">Balance</th><th scope="col">Method</th><th scope="col">Status</th><th scope="col">Details</th></tr></thead><tbody id="invoiceTableBody"></tbody></table></div>
+        </section>
+        <section class="panel" aria-labelledby="connectionHeading">
+          <h2 id="connectionHeading">API connection</h2>
+          <p id="connectionStatus" class="status" role="status" aria-live="polite">Checking API connection…</p>
+          <button id="checkConnectionButton" type="button">Check connection</button>
+        </section>
+        <noscript><p class="status" data-state="error">Enable JavaScript to connect to the clinic API.</p></noscript>
+      </main>
+      <footer>Bautro Optical Clinic · Clinic Management System</footer>
+    </div>
+  </div>
+</body>
+</html>

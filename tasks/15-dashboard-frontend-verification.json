@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-21",
+  "task": 15,
+  "browser_empty_zero_cards_no_stock_state": true,
+  "six_cards_peso_revenue_and_safe_low_stock_list": true,
+  "browser_cross_screen_reconciliation": {
+    "patients": 2,
+    "prescriptions": 1,
+    "inventory_rows": 3,
+    "today_amount_paid": 40,
+    "total_amount_paid": 50,
+    "initial_low_count": 2
+  },
+  "browser_threshold_equality_restock_removal_refresh": true,
+  "browser_all_four_screens_navigation_back_index": true,
+  "browser_stopped_backend_error_retry_restart_recovery": true,
+  "unit_safe_text_shape_validation_duplicate_loading_hide_finally_recovery": true,
+  "shared_task10_regression_passed": true,
+  "desktop": {
+    "viewport": 1265,
+    "page": 1265,
+    "card_columns": 3
+  },
+  "narrow": {
+    "viewport": 360,
+    "page": 360,
+    "card_columns": 1,
+    "table_container": 290,
+    "table": 600
+  },
+  "final_synthetic_counts": {
+    "patients": 2,
+    "prescriptions": 1,
+    "inventory": 3,
+    "billing": 2
+  },
+  "synthetic_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_legacy_source_hashes_match": true,
+  "owned_servers_stopped": true,
+  "viewport_reset": true,
+  "no_generation_migrations_installs_or_original_database_writes": true,
+  "limitations": [
+    "Task 16 acceptance/restore rehearsal/cutover still pending; all legacy code retained.",
+    "Task 12 native print preview is user-confirmed, not automatically inspected.",
+    "Backend float/count+1/idempotency compatibility limitations retained."
+  ],
+  "chat_recommendation": "Start a fresh chat for Task 16: tasks/16-acceptance-and-cutover.md"
+}

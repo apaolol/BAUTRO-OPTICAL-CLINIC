@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bautro Optical Clinic management">
+  <title>Inventory | Bautro Optical Clinic</title>
+  <link rel="icon" href="../assets/bautro-optical-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../src/css/universalStyles.css">
+  <link rel="stylesheet" href="../src/css/inventory.css">
+  <script defer src="../src/js/api.js"></script>
+  <script defer src="../src/js/common.js"></script>
+  <script defer src="../src/js/shell.js"></script>
+  <script defer src="../src/js/inventory.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="../index.html"><img src="../assets/bautro-optical-logo.svg" alt="Bautro Optical Clinic"></a>
+      <nav aria-label="Main navigation"><a href="../index.html">Dashboard</a>
+<a href="../pages/patients.html">Patients</a>
+<a href="../pages/prescriptions.html">Prescriptions</a>
+<a href="../pages/inventory.html" aria-current="page">Inventory</a>
+<a href="../pages/billing.html">Billing</a></nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span>Inventory</span><span class="muted">Admin</span></header>
+      <main id="mainContent" tabindex="-1">
+        <h1>Inventory</h1>
+        <div class="inventory-toolbar"><button id="addInventoryButton" type="button">Add item</button><button id="refreshInventoryButton" type="button">Refresh inventory</button></div>
+        <p id="inventoryFeedback" class="status" role="status" aria-live="polite"></p>
+        <section id="inventoryFormSection" class="panel" aria-labelledby="inventoryFormHeading" hidden>
+          <h2 id="inventoryFormHeading">Add inventory item</h2>
+          <form id="inventoryForm"><fieldset id="inventoryFormFields"><legend>Item information</legend><div class="inventory-form-grid">
+<div class="inventory-field"><label for="inventory_brand">Brand</label><input id="inventory_brand" name="brand" type="text"></div>
+<div class="inventory-field"><label for="inventory_model">Model</label><input id="inventory_model" name="model" type="text"></div>
+<div class="inventory-field"><label for="inventory_category">Category</label><input id="inventory_category" name="category" type="text"></div>
+<div class="inventory-field"><label for="inventory_supplier">Supplier</label><input id="inventory_supplier" name="supplier" type="text"></div>
+<div class="inventory-field"><label for="inventory_cost">Cost (PHP)</label><input id="inventory_cost" name="cost" type="number" min="0" step="0.01"></div>
+<div class="inventory-field"><label for="inventory_selling_price">Selling price (PHP)</label><input id="inventory_selling_price" name="selling_price" type="number" min="0" step="0.01"></div>
+<div class="inventory-field"><label for="inventory_quantity">Quantity</label><input id="inventory_quantity" name="quantity" type="number" min="0" step="1" value="0"></div>
+<div class="inventory-field"><label for="inventory_reorder_level">Reorder level</label><input id="inventory_reorder_level" name="reorder_level" type="number" min="0" step="1" value="5"></div>
+          </div></fieldset><p id="inventorySaveStatus" class="status" role="status" aria-live="polite"></p>
+          <div class="inventory-toolbar"><button id="saveInventoryButton" type="submit">Save item</button><button id="cancelInventoryButton" type="button">Cancel add</button></div></form>
+        </section>
+        <section id="restockSection" class="panel" aria-labelledby="restockHeading" hidden>
+          <h2 id="restockHeading">Restock item</h2><p id="restockItemSummary"></p>
+          <form id="restockForm"><div class="inventory-field"><label for="restockQuantity">Units to add</label><input id="restockQuantity" type="number" min="1" step="1" value="1" required></div>
+          <p id="restockStatus" class="status" role="status" aria-live="polite"></p>
+          <div class="inventory-toolbar"><button id="saveRestockButton" type="submit">Add stock</button><button id="cancelRestockButton" type="button">Cancel restock</button></div></form>
+        </section>
+        <section class="panel" aria-labelledby="inventoryListHeading"><h2 id="inventoryListHeading">Inventory records</h2>
+          <p id="lowStockCount" role="status" aria-live="polite"></p>
+          <div class="inventory-toolbar"><div class="inventory-field"><label for="inventorySearch">Search brand, model, code or category</label><input id="inventorySearch" type="search"></div><button id="clearInventorySearchButton" type="button">Clear search</button></div>
+          <p id="inventoryCount" role="status" aria-live="polite"></p><p id="inventoryListStatus" class="status" role="status" aria-live="polite">Loading inventory…</p>
+          <div class="inventory-table-scroll" tabindex="0" role="region" aria-label="Inventory records table"><table id="inventoryTable" hidden><caption>Inventory items</caption><thead><tr><th scope="col">Code</th><th scope="col">Category</th><th scope="col">Brand</th><th scope="col">Model</th><th scope="col">Supplier</th><th scope="col">Quantity</th><th scope="col">Reorder level</th><th scope="col">Cost</th><th scope="col">Selling price</th><th scope="col">Stock status</th><th scope="col">Restock</th></tr></thead><tbody id="inventoryTableBody"></tbody></table></div>
+        </section>
+        <section class="panel" aria-labelledby="connectionHeading">
+          <h2 id="connectionHeading">API connection</h2>
+          <p id="connectionStatus" class="status" role="status" aria-live="polite">Checking API connection…</p>
+          <button id="checkConnectionButton" type="button">Check connection</button>
+        </section>
+        <noscript><p class="status" data-state="error">Enable JavaScript to connect to the clinic API.</p></noscript>
+      </main>
+      <footer>Bautro Optical Clinic · Clinic Management System</footer>
+    </div>
+  </div>
+</body>
+</html>

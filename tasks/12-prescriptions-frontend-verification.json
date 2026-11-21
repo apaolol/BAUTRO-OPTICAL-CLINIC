@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-21",
+  "task": 12,
+  "all_17_inputs_full_minimal_persisted_parity": true,
+  "optical_strings_signed_values_and_leading_zero_axes_preserved": true,
+  "all_16_optional_blanks_null": true,
+  "browser_rx_patient_search_counts_clear_no_match": true,
+  "safe_full_details_multiline_notes": true,
+  "browser_required_field_cancel_close": true,
+  "browser_stopped_backend_failed_save_list_retention_restart_retry_persistence": true,
+  "synthetic_js_duplicate_guard_single_post_disable_finally_and_print_selection": true,
+  "synthetic_records_after_verification": 3,
+  "synthetic_integrity_ok": true,
+  "native_print_preview": {
+    "status": "passed",
+    "verified_by": "user explicit confirmation in chat",
+    "selected": "RX-00001",
+    "both_eyes_lens_brand_coating_notes_present": true,
+    "navigation_forms_other_records_excluded": true,
+    "automation_limitation": "In-app preview unavailable; Windows browser URL could not be verified and Chrome had no connected browser-control interface."
+  },
+  "responsive_layout": {
+    "desktop": {
+      "viewport": 1265,
+      "page": 1265,
+      "container": 935,
+      "table": 1200
+    },
+    "narrow": {
+      "viewport": 360,
+      "page": 360,
+      "container": 290,
+      "table": 1200
+    },
+    "viewport_reset": true
+  },
+  "tasks10_11_js_regression_passed": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_and_legacy_source_hashes_match": true,
+  "no_generation_migrations_installs_or_real_database_writes": true,
+  "owned_servers_stopped": true,
+  "limitations": [
+    "Native print preview is user-confirmed, not automatically inspected.",
+    "Other domain frontend tasks and final acceptance pending.",
+    "Preview harness redirects Prescription router only; never exercise other domain requests with it.",
+    "Count+1 codes and lack of idempotency unchanged."
+  ],
+  "chat_recommendation": "Keep this chat for Task 13: tasks/13-inventory-frontend.md"
+}

@@ -1,0 +1,22 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+class Element {
+ constructor(){this.value='';this.textContent='';this.hidden=false;this.disabled=false;this.dataset={};this.children=[];this.isConnected=true;}
+ append(...items){this.children.push(...items);}replaceChildren(){this.children=[];}setAttribute(){}addEventListener(){}focus(){}
+ reset(){for(const [id,item]of Object.entries(elements))if(id.startsWith('invoice_'))item.value='';}
+}
+const elements={};for(const m of fs.readFileSync('frontend/pages/billing.html','utf8').matchAll(/id="([^"]+)"/g))elements[m[1]]=new Element();
+const context=vm.createContext({document:{getElementById:id=>elements[id],createElement:()=>new Element()},apiRequest:async()=>[],formatPeso:n=>'PHP '+n.toFixed(2),setStatus:(e,m,s='')=>{e.textContent=m;e.dataset.state=s;},setButtonBusy:(e,b)=>{e.disabled=b;}});
+vm.runInContext(fs.readFileSync('frontend/src/js/billing.js','utf8'),context);const run=s=>vm.runInContext(s,context);
+(async()=>{
+ await new Promise(resolve=>setImmediate(resolve));assert.match(elements.invoiceListStatus.textContent,/No billing/);
+ const cases=[[0,0,0,0,0,'Paid'],[100,0,0,100,100,'Pending'],[100,10,40,90,50,'Partial'],[100,10,90,90,0,'Paid'],[100,10,120,90,0,'Paid'],[100,150,0,0,0,'Paid'],[12.5,2.25,4.5,10.25,5.75,'Partial']];
+ elements.invoice_patient_number.value=' P-SYN ';
+ for(const [subtotal,discount,paid,total,balance,status]of cases){elements.invoice_subtotal.value=String(subtotal);elements.invoice_discount.value=String(discount);elements.invoice_amount_paid.value=String(paid);let p=run('readInvoiceForm()');assert.equal(p.patient_number,'P-SYN');assert.equal(p.total,total);assert.equal(p.balance,balance);assert.equal(p.status,status);assert.equal(p.payment_method,null);assert.equal(Object.keys(p).length,8);run('updateInvoiceTotals()');assert.equal(elements.invoiceTotal.textContent,'PHP '+total.toFixed(2));}
+ elements.invoice_patient_number.value=' ';assert.throws(()=>run('readInvoiceForm()'),/required/);elements.invoice_patient_number.value='P-SYN';elements.invoice_subtotal.value='-1';assert.throws(()=>run('readInvoiceForm()'),/non-negative/);elements.invoice_subtotal.value='Infinity';assert.throws(()=>run('readInvoiceForm()'),/non-negative/);elements.invoice_subtotal.value='';elements.invoice_discount.value='';elements.invoice_amount_paid.value='';assert.equal(run('readInvoiceForm().subtotal'),0);
+ let finish,calls=0;context.event={preventDefault(){}};context.apiSend=(path,method,payload)=>{assert.equal(path,'/billing/');assert.equal(method,'POST');for(const k of ['subtotal','discount','total','amount_paid','balance'])assert.equal(typeof payload[k],'number');calls++;return new Promise(r=>{finish=r;});};
+ const saving=run('saveInvoice(event)');assert.equal(elements.saveInvoiceButton.disabled,true);assert.equal(elements.invoiceFormFields.disabled,true);assert.equal(elements.cancelInvoiceButton.disabled,true);await run('saveInvoice(event)');assert.equal(calls,1);finish({invoice_number:'INV-SYN'});await saving;assert.equal(elements.saveInvoiceButton.disabled,false);assert.match(elements.invoiceFeedback.textContent,/INV-SYN/);
+ elements.invoice_patient_number.value='Retained';context.apiSend=async()=>{throw new Error('Synthetic 422');};await run('saveInvoice(event)');assert.equal(elements.invoice_patient_number.value,'Retained');assert.equal(elements.invoiceFormFields.disabled,false);assert.match(elements.invoiceSaveStatus.textContent,/Synthetic 422/);
+ context.apiRequest=async()=>{throw new Error('Synthetic list failure');};await run('loadInvoices()');run('renderInvoices()');assert.match(elements.invoiceListStatus.textContent,/Synthetic list failure/);
+ context.record={invoice_number:'INV-SYN',patient_number:'<b>literal</b>',subtotal:100,discount:10,total:90,amount_paid:40,balance:50,payment_method:'GCash',status:'Partial'};run('showInvoiceDetails(record,null)');assert.equal(elements.invoiceDetails.children.length,10);assert.equal(elements.invoiceDetails.children[1].children[1].textContent,'<b>literal</b>');assert.equal(elements.invoiceDetails.children[7].children[1].textContent,'PHP 50.00');
+ console.log('PASS: all six billing cases plus decimals, five monetary payload fields, live totals/status, blank validation, duplicate guard, disable/finally retention, list errors and safe complete details.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

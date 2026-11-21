@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-21",
+  "task": 13,
+  "all_eight_create_fields_numeric_defaults_zero_null_prices": true,
+  "browser_all_four_search_keys_counts_clear_no_match": true,
+  "browser_two_restocks_zero_to_five_to_seven_threshold_equality_and_badge_count_refresh": true,
+  "browser_add_and_restock_cancel": true,
+  "browser_network_restock_list_failure_retention_restart_retry": true,
+  "browser_real_200_error_missing_item_visible_no_increment": true,
+  "synthetic_stale_item_code_restored": true,
+  "unit_encoded_special_code_positive_integer_query_put_without_body": true,
+  "unit_pending_duplicate_guards_disable_finally_recovery": true,
+  "shared_task10_regression_passed": true,
+  "persisted_synthetic_rows": 2,
+  "persisted_quantities": [
+    8,
+    5
+  ],
+  "synthetic_all_field_assertions_and_integrity_passed": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_and_retained_legacy_hashes_match": true,
+  "desktop_viewport_and_page": [
+    1265,
+    1265
+  ],
+  "narrow_viewport_and_page": [
+    360,
+    360
+  ],
+  "narrow_container_and_table": [
+    290,
+    1142
+  ],
+  "viewport_reset": true,
+  "owned_servers_stopped": true,
+  "no_generation_migrations_installs_or_original_database_writes": true,
+  "limitations": [
+    "Null quantity/reorder displays Unknown; backend SQL NULL restock limitation retained.",
+    "Count+1 code and non-idempotent restock limitations retained.",
+    "Preview harness redirects Inventory router only; do not exercise other domain routes.",
+    "Billing/dashboard/final acceptance pending."
+  ],
+  "chat_recommendation": "Keep this chat for Task 14: tasks/14-billing-frontend.md"
+}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-21",
+  "task": 14,
+  "browser_zero_pending_partial_full_overpaid_excess_discount_cases": true,
+  "all_five_monetary_payload_fields_and_status_preserved": true,
+  "browser_payment_methods_and_blank_null": true,
+  "browser_invoice_patient_search_counts_clear_no_match": true,
+  "browser_all_ten_detail_fields_peso_format": true,
+  "browser_blank_patient_cancel_close": true,
+  "browser_network_failure_retention_restart_retry_persistence": true,
+  "unit_duplicate_guard_disable_finally_invalid_amounts_safe_details": true,
+  "shared_task10_regression_passed": true,
+  "persisted_synthetic_invoices": 7,
+  "all_persisted_fields_and_integrity_passed": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_and_legacy_source_hashes_match": true,
+  "responsive_dimensions": {
+    "desktop": {
+      "viewport": 1265,
+      "page": 1265,
+      "container": 935,
+      "table": 1000
+    },
+    "narrow": {
+      "viewport": 360,
+      "page": 360,
+      "container": 290,
+      "table": 1000
+    }
+  },
+  "viewport_reset": true,
+  "owned_servers_stopped": true,
+  "no_generation_migrations_installs_or_original_database_writes": true,
+  "documentation_correction": "Five monetary fields, as established in Task 08; corrected stale Task 14 checklist.",
+  "limitations": [
+    "Float money, count+1 and non-idempotent creates retained.",
+    "Backend stores submitted amounts/status and does not validate linked patient existence.",
+    "Preview harness redirects Billing router only; do not exercise other domains.",
+    "Dashboard and acceptance remain pending."
+  ],
+  "chat_recommendation": "Keep this chat for Task 15: tasks/15-dashboard-frontend.md"
+}

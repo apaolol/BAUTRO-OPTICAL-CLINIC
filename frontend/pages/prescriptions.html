@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bautro Optical Clinic management">
+  <title>Prescriptions | Bautro Optical Clinic</title>
+  <link rel="icon" href="../assets/bautro-optical-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../src/css/universalStyles.css">
+  <link rel="stylesheet" href="../src/css/prescriptions.css">
+  <script defer src="../src/js/api.js"></script>
+  <script defer src="../src/js/common.js"></script>
+  <script defer src="../src/js/shell.js"></script>
+  <script defer src="../src/js/prescriptions.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="../index.html"><img src="../assets/bautro-optical-logo.svg" alt="Bautro Optical Clinic"></a>
+      <nav aria-label="Main navigation"><a href="../index.html">Dashboard</a>
+<a href="../pages/patients.html">Patients</a>
+<a href="../pages/prescriptions.html" aria-current="page">Prescriptions</a>
+<a href="../pages/inventory.html">Inventory</a>
+<a href="../pages/billing.html">Billing</a></nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span>Prescriptions</span><span class="muted">Admin</span></header>
+      <main id="mainContent" tabindex="-1">
+        <h1>Prescriptions</h1>
+        <div class="prescription-toolbar"><button id="addPrescriptionButton" type="button">Add prescription</button><button id="refreshPrescriptionsButton" type="button">Refresh prescriptions</button></div>
+        <p id="prescriptionFeedback" class="status" role="status" aria-live="polite"></p>
+        <section id="prescriptionFormSection" class="panel" aria-labelledby="prescriptionFormHeading" hidden>
+          <h2 id="prescriptionFormHeading">Add new prescription</h2>
+          <form id="prescriptionForm">
+            <fieldset id="prescriptionFormFields"><legend>Patient, refraction, lens and frame</legend><div class="prescription-form-grid">
+<div class="prescription-field"><label for="prescription_patient_number">Patient number (required)</label><input id="prescription_patient_number" name="patient_number" type="text" required></div>
+<div class="prescription-field"><label for="prescription_od_sphere">OD Sphere</label><input id="prescription_od_sphere" name="od_sphere" type="text"></div>
+<div class="prescription-field"><label for="prescription_od_cylinder">OD Cylinder</label><input id="prescription_od_cylinder" name="od_cylinder" type="text"></div>
+<div class="prescription-field"><label for="prescription_od_axis">OD Axis</label><input id="prescription_od_axis" name="od_axis" type="text"></div>
+<div class="prescription-field"><label for="prescription_od_add">OD Add</label><input id="prescription_od_add" name="od_add" type="text"></div>
+<div class="prescription-field"><label for="prescription_od_pd">OD PD</label><input id="prescription_od_pd" name="od_pd" type="text"></div>
+<div class="prescription-field"><label for="prescription_os_sphere">OS Sphere</label><input id="prescription_os_sphere" name="os_sphere" type="text"></div>
+<div class="prescription-field"><label for="prescription_os_cylinder">OS Cylinder</label><input id="prescription_os_cylinder" name="os_cylinder" type="text"></div>
+<div class="prescription-field"><label for="prescription_os_axis">OS Axis</label><input id="prescription_os_axis" name="os_axis" type="text"></div>
+<div class="prescription-field"><label for="prescription_os_add">OS Add</label><input id="prescription_os_add" name="os_add" type="text"></div>
+<div class="prescription-field"><label for="prescription_os_pd">OS PD</label><input id="prescription_os_pd" name="os_pd" type="text"></div>
+<div class="prescription-field"><label for="prescription_lens_type">Lens type</label><input id="prescription_lens_type" name="lens_type" type="text"></div>
+<div class="prescription-field"><label for="prescription_lens_brand">Lens brand</label><input id="prescription_lens_brand" name="lens_brand" type="text"></div>
+<div class="prescription-field"><label for="prescription_lens_coating">Lens coating</label><input id="prescription_lens_coating" name="lens_coating" type="text"></div>
+<div class="prescription-field"><label for="prescription_frame_brand">Frame brand</label><input id="prescription_frame_brand" name="frame_brand" type="text"></div>
+<div class="prescription-field"><label for="prescription_frame_model">Frame model</label><input id="prescription_frame_model" name="frame_model" type="text"></div>
+<div class="prescription-field"><label for="prescription_notes">Notes / special instructions</label><textarea id="prescription_notes" name="notes" rows="3"></textarea></div>
+            </div></fieldset>
+            <p id="prescriptionSaveStatus" class="status" role="status" aria-live="polite"></p>
+            <div class="prescription-toolbar"><button id="savePrescriptionButton" type="submit">Save prescription</button><button id="cancelPrescriptionButton" type="button">Cancel</button></div>
+          </form>
+        </section>
+        <section id="prescriptionDetailsSection" class="panel" aria-labelledby="prescriptionDetailsHeading" hidden>
+          <p class="prescription-print-brand">Bautro Optical Clinic</p>
+          <h2 id="prescriptionDetailsHeading" tabindex="-1">Prescription details</h2>
+          <dl id="prescriptionDetails" class="prescription-details"></dl>
+          <button id="printPrescriptionButton" type="button">Print selected prescription</button>
+          <button id="closePrescriptionDetailsButton" type="button">Close details</button>
+        </section>
+        <section class="panel" aria-labelledby="prescriptionListHeading">
+          <h2 id="prescriptionListHeading">Prescription records</h2>
+          <div class="prescription-toolbar"><div class="prescription-field"><label for="prescriptionSearch">Search RX or patient number</label><input id="prescriptionSearch" type="search"></div><button id="clearPrescriptionSearchButton" type="button">Clear search</button></div>
+          <p id="prescriptionCount" role="status" aria-live="polite"></p>
+          <p id="prescriptionListStatus" class="status" role="status" aria-live="polite">Loading prescriptions…</p>
+          <div class="prescription-table-scroll" tabindex="0" role="region" aria-label="Prescription records table">
+            <table id="prescriptionTable" hidden><caption>Prescription records</caption><thead><tr><th scope="col">RX #</th><th scope="col">Patient #</th><th scope="col">Date</th><th scope="col">OD Sphere</th><th scope="col">OD Cylinder</th><th scope="col">OD Axis</th><th scope="col">OS Sphere</th><th scope="col">OS Cylinder</th><th scope="col">OS Axis</th><th scope="col">Lens type</th><th scope="col">Frame brand</th><th scope="col">Frame model</th><th scope="col">Details</th></tr></thead><tbody id="prescriptionTableBody"></tbody></table>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="connectionHeading">
+          <h2 id="connectionHeading">API connection</h2>
+          <p id="connectionStatus" class="status" role="status" aria-live="polite">Checking API connection…</p>
+          <button id="checkConnectionButton" type="button">Check connection</button>
+        </section>
+        <noscript><p class="status" data-state="error">Enable JavaScript to connect to the clinic API.</p></noscript>
+      </main>
+      <footer>Bautro Optical Clinic · Clinic Management System</footer>
+    </div>
+  </div>
+</body>
+</html>

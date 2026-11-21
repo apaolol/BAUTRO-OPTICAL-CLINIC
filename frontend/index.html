@@ -1,17 +1,60 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/brand/bautro-optical-logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bautro Optical Clinic — Clinic Management System" />
-    <title>Bautro Optical Clinic</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bautro Optical Clinic management">
+  <title>Dashboard | Bautro Optical Clinic</title>
+  <link rel="icon" href="assets/bautro-optical-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="src/css/universalStyles.css">
+  <link rel="stylesheet" href="src/css/dashboard.css">
+  <script defer src="src/js/api.js"></script>
+  <script defer src="src/js/common.js"></script>
+  <script defer src="src/js/shell.js"></script>
+  <script defer src="src/js/dashboard.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="index.html"><img src="assets/bautro-optical-logo.svg" alt="Bautro Optical Clinic"></a>
+      <nav aria-label="Main navigation"><a href="index.html" aria-current="page">Dashboard</a>
+<a href="pages/patients.html">Patients</a>
+<a href="pages/prescriptions.html">Prescriptions</a>
+<a href="pages/inventory.html">Inventory</a>
+<a href="pages/billing.html">Billing</a></nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span>Dashboard</span><span class="muted">Admin</span></header>
+      <main id="mainContent" tabindex="-1">
+        <h1>Dashboard</h1>
+        <button id="refreshDashboardButton" type="button">Refresh dashboard</button>
+        <p id="dashboardStatus" class="status" role="status" aria-live="polite">Loading dashboard…</p>
+        <button id="retryDashboardButton" type="button" hidden>Retry dashboard</button>
+        <div id="dashboardContent" hidden>
+          <section aria-label="Clinic overview" class="dashboard-cards">
+<article class="dashboard-card"><h2>Total patients</h2><p id="dashboard_total_patients" class="dashboard-value"></p><p class="muted">Registered</p></article>
+<article class="dashboard-card"><h2>Prescriptions</h2><p id="dashboard_total_prescriptions" class="dashboard-value"></p><p class="muted">On record</p></article>
+<article class="dashboard-card"><h2>Inventory items</h2><p id="dashboard_total_inventory_items" class="dashboard-value"></p><p class="muted">Catalogued</p></article>
+<article class="dashboard-card"><h2>Today’s revenue</h2><p id="dashboard_today_revenue" class="dashboard-value"></p><p class="muted">Amount collected today</p></article>
+<article class="dashboard-card"><h2>Total revenue</h2><p id="dashboard_total_revenue" class="dashboard-value"></p><p class="muted">Amount collected all time</p></article>
+<article class="dashboard-card"><h2>Low-stock items</h2><p id="dashboard_low_stock_count" class="dashboard-value"></p><p class="muted">At or below reorder level</p></article>
+
+          </section>
+          <section class="panel" aria-labelledby="lowStockHeading"><h2 id="lowStockHeading">Low-stock overview</h2>
+            <p id="dashboardStockMessage" role="status" aria-live="polite"></p><p><a href="pages/inventory.html">Open inventory to restock</a></p>
+            <div class="dashboard-table-scroll" tabindex="0" role="region" aria-label="Low-stock items table"><table id="dashboardStockTable" hidden><caption>Items at or below reorder level</caption><thead><tr><th scope="col">Item code</th><th scope="col">Brand</th><th scope="col">Model</th><th scope="col">Quantity</th><th scope="col">Reorder level</th></tr></thead><tbody id="dashboardStockBody"></tbody></table></div>
+          </section>
+        </div>
+        <section class="panel" aria-labelledby="connectionHeading">
+          <h2 id="connectionHeading">API connection</h2>
+          <p id="connectionStatus" class="status" role="status" aria-live="polite">Checking API connection…</p>
+          <button id="checkConnectionButton" type="button">Check connection</button>
+        </section>
+        <noscript><p class="status" data-state="error">Enable JavaScript to connect to the clinic API.</p></noscript>
+      </main>
+      <footer>Bautro Optical Clinic · Clinic Management System</footer>
+    </div>
+  </div>
+</body>
 </html>

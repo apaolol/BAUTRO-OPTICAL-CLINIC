@@ -1,0 +1,18 @@
+.patient-toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.patient-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.patient-field label { font-weight: bold; }
+.patient-field input, .patient-field select, .patient-field textarea { width: 100%; min-width: 0; padding: 10px; border: 1px solid #8dabad; border-radius: 5px; font: inherit; color: var(--text); background: white; }
+.patient-field textarea { resize: vertical; }
+.patient-form-grid, .patient-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+#patientFormFields { border: 1px solid var(--border); padding: 16px; min-width: 0; }
+.patient-details dt { font-weight: bold; }
+.patient-details dd { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.patient-table-scroll { max-width: 100%; overflow-x: auto; }
+#patientTable { width: 100%; min-width: 850px; border-collapse: collapse; text-align: left; }
+#patientTable caption { text-align: left; font-weight: bold; margin-bottom: 10px; }
+#patientTable th, #patientTable td { padding: 12px; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; max-width: 250px; }
+#patientTable th { background: var(--cyan); }
+@media (max-width: 700px) {
+ .patient-form-grid, .patient-details { grid-template-columns: 1fr; }
+ .patient-toolbar .patient-field { width: 100%; }
+}

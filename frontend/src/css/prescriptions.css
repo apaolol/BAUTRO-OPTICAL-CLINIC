@@ -1,0 +1,34 @@
+.prescription-toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.prescription-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.prescription-field label { font-weight: bold; }
+.prescription-field input, .prescription-field select, .prescription-field textarea { width: 100%; min-width: 0; padding: 10px; border: 1px solid #8dabad; border-radius: 5px; font: inherit; color: var(--text); background: white; }
+.prescription-field textarea { resize: vertical; }
+.prescription-form-grid, .prescription-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+#prescriptionFormFields { border: 1px solid var(--border); padding: 16px; min-width: 0; }
+.prescription-details dt { font-weight: bold; }
+.prescription-details dd { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.prescription-table-scroll { max-width: 100%; overflow-x: auto; }
+#prescriptionTable { width: 100%; min-width: 1200px; border-collapse: collapse; text-align: left; }
+#prescriptionTable caption { text-align: left; font-weight: bold; margin-bottom: 10px; }
+#prescriptionTable th, #prescriptionTable td { padding: 12px; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; max-width: 250px; }
+#prescriptionTable th { background: var(--cyan); }
+@media (max-width: 700px) {
+ .prescription-form-grid, .prescription-details { grid-template-columns: 1fr; }
+ .prescription-toolbar .prescription-field { width: 100%; }
+}
+
+.prescription-print-brand { font-size: 20px; font-weight: bold; }
+@media print {
+ @page { margin: 15mm; }
+ body { background: white; color: black; font-size: 11pt; }
+ .skip-link, .sidebar, .topbar, footer, noscript { display: none !important; }
+ .app-layout, .main-area { display: block; min-height: 0; width: 100%; }
+ main { max-width: none; padding: 0; }
+ main > :not(#prescriptionDetailsSection) { display: none !important; }
+ #prescriptionDetailsSection { border: 0; margin: 0; padding: 0; }
+ #prescriptionDetailsSection button { display: none !important; }
+ .prescription-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10pt 18pt; }
+ .prescription-details > div { break-inside: avoid; }
+ .prescription-details dt { color: black; }
+ .prescription-details dd { white-space: pre-wrap; overflow-wrap: anywhere; }
+}

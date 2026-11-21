@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bautro Optical Clinic management">
+  <title>Patients | Bautro Optical Clinic</title>
+  <link rel="icon" href="../assets/bautro-optical-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../src/css/universalStyles.css">
+  <link rel="stylesheet" href="../src/css/patients.css">
+  <script defer src="../src/js/api.js"></script>
+  <script defer src="../src/js/common.js"></script>
+  <script defer src="../src/js/shell.js"></script>
+  <script defer src="../src/js/patients.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="../index.html"><img src="../assets/bautro-optical-logo.svg" alt="Bautro Optical Clinic"></a>
+      <nav aria-label="Main navigation"><a href="../index.html">Dashboard</a>
+<a href="../pages/patients.html" aria-current="page">Patients</a>
+<a href="../pages/prescriptions.html">Prescriptions</a>
+<a href="../pages/inventory.html">Inventory</a>
+<a href="../pages/billing.html">Billing</a></nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span>Patients</span><span class="muted">Admin</span></header>
+      <main id="mainContent" tabindex="-1">
+        <h1>Patients</h1>
+        <div class="patient-toolbar"><button id="addPatientButton" type="button">Add patient</button><button id="refreshPatientsButton" type="button">Refresh patients</button></div>
+        <p id="patientFeedback" class="status" role="status" aria-live="polite"></p>
+        <section id="patientFormSection" class="panel" aria-labelledby="patientFormHeading" hidden>
+          <h2 id="patientFormHeading">Add new patient</h2>
+          <form id="patientForm">
+            <fieldset id="patientFormFields"><legend>Personal and clinical information</legend><div class="patient-form-grid">
+<div class="patient-field"><label for="patient_full_name">Full name (required)</label><input id="patient_full_name" name="full_name" type="text" required></div>
+<div class="patient-field"><label for="patient_contact_number">Contact number (required)</label><input id="patient_contact_number" name="contact_number" type="tel" required></div>
+<div class="patient-field"><label for="patient_date_of_birth">Date of birth</label><input id="patient_date_of_birth" name="date_of_birth" type="date"></div>
+<div class="patient-field"><label for="patient_age">Age</label><input id="patient_age" name="age" type="number" min="0" max="150" step="1"></div>
+<div class="patient-field"><label for="patient_sex">Sex</label><select id="patient_sex" name="sex"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+<div class="patient-field"><label for="patient_address">Address</label><textarea id="patient_address" name="address" rows="3"></textarea></div>
+<div class="patient-field"><label for="patient_occupation">Occupation</label><input id="patient_occupation" name="occupation" type="text"></div>
+<div class="patient-field"><label for="patient_emergency_contact">Emergency contact</label><input id="patient_emergency_contact" name="emergency_contact" type="text"></div>
+<div class="patient-field"><label for="patient_chief_complaint">Chief complaint</label><input id="patient_chief_complaint" name="chief_complaint" type="text"></div>
+<div class="patient-field"><label for="patient_medical_history">Medical history</label><textarea id="patient_medical_history" name="medical_history" rows="3"></textarea></div>
+<div class="patient-field"><label for="patient_ocular_history">Ocular history</label><textarea id="patient_ocular_history" name="ocular_history" rows="3"></textarea></div>
+<div class="patient-field"><label for="patient_allergies">Allergies</label><input id="patient_allergies" name="allergies" type="text"></div>
+<div class="patient-field"><label for="patient_current_medications">Current medications</label><input id="patient_current_medications" name="current_medications" type="text"></div>
+<div class="patient-field"><label for="patient_visual_acuity_od">VA OD (unaided)</label><input id="patient_visual_acuity_od" name="visual_acuity_od" type="text"></div>
+<div class="patient-field"><label for="patient_visual_acuity_os">VA OS (unaided)</label><input id="patient_visual_acuity_os" name="visual_acuity_os" type="text"></div>
+<div class="patient-field"><label for="patient_bcva_od">BCVA OD</label><input id="patient_bcva_od" name="bcva_od" type="text"></div>
+<div class="patient-field"><label for="patient_bcva_os">BCVA OS</label><input id="patient_bcva_os" name="bcva_os" type="text"></div>
+<div class="patient-field"><label for="patient_iop">IOP</label><input id="patient_iop" name="iop" type="text"></div>
+<div class="patient-field"><label for="patient_diagnosis">Diagnosis</label><input id="patient_diagnosis" name="diagnosis" type="text"></div>
+<div class="patient-field"><label for="patient_clinical_notes">Clinical notes</label><textarea id="patient_clinical_notes" name="clinical_notes" rows="3"></textarea></div>
+<div class="patient-field"><label for="patient_other_tests">Other tests</label><textarea id="patient_other_tests" name="other_tests" rows="3"></textarea></div>
+            </div></fieldset>
+            <p id="patientSaveStatus" class="status" role="status" aria-live="polite"></p>
+            <div class="patient-toolbar"><button id="savePatientButton" type="submit">Save patient</button><button id="cancelPatientButton" type="button">Cancel</button></div>
+          </form>
+        </section>
+        <section id="patientDetailsSection" class="panel" aria-labelledby="patientDetailsHeading" hidden>
+          <h2 id="patientDetailsHeading" tabindex="-1">Patient details</h2>
+          <dl id="patientDetails" class="patient-details"></dl>
+          <button id="closePatientDetailsButton" type="button">Close details</button>
+        </section>
+        <section class="panel" aria-labelledby="patientListHeading">
+          <h2 id="patientListHeading">Patient records</h2>
+          <div class="patient-toolbar"><div class="patient-field"><label for="patientSearch">Search name, patient number or contact</label><input id="patientSearch" type="search"></div><button id="clearPatientSearchButton" type="button">Clear search</button></div>
+          <p id="patientCount" role="status" aria-live="polite"></p>
+          <p id="patientListStatus" class="status" role="status" aria-live="polite">Loading patients…</p>
+          <div class="patient-table-scroll" tabindex="0" role="region" aria-label="Patient records table">
+            <table id="patientTable" hidden><caption>Registered patients</caption><thead><tr><th scope="col">Patient #</th><th scope="col">Full name</th><th scope="col">Age</th><th scope="col">Sex</th><th scope="col">Contact</th><th scope="col">Diagnosis</th><th scope="col">Registered</th><th scope="col">Details</th></tr></thead><tbody id="patientTableBody"></tbody></table>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="connectionHeading">
+          <h2 id="connectionHeading">API connection</h2>
+          <p id="connectionStatus" class="status" role="status" aria-live="polite">Checking API connection…</p>
+          <button id="checkConnectionButton" type="button">Check connection</button>
+        </section>
+        <noscript><p class="status" data-state="error">Enable JavaScript to connect to the clinic API.</p></noscript>
+      </main>
+      <footer>Bautro Optical Clinic · Clinic Management System</footer>
+    </div>
+  </div>
+</body>
+</html>

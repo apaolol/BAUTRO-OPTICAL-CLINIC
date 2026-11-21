@@ -1,0 +1,30 @@
+{
+  "domain_contracts": "passed",
+  "fresh_process_restart": "passed",
+  "fresh_migrations": "No new upgrade operations detected.",
+  "restore_command": "Verified legacy source and SQLite restored to new private review folder: C:\\Users\\USER\\Desktop\\BAUTRO OPTICAL CLINIC\\.setup-backups\\restore-task16-reverify-20261121-164729",
+  "legacy_restored_startup_reads": "passed",
+  "populated_migrations": "No new upgrade operations detected.",
+  "aggregates_exact_routes_cors": "passed",
+  "javascript_checks": {
+    "10-verify-shell.js": "PASS: JSON, validation/HTTP/legacy errors, network recovery, loading/disable/finally, JSON send and null responses.",
+    "11-verify-patients-frontend.js": "PASS: all 21 fields, trimming/nulls/age zero, required/age validation, pending duplicate guard, disable/finally recovery, retained entries and list errors, nullable records.",
+    "12-verify-prescriptions-frontend.js": "PASS: 17 inputs, string optical values/leading zeros/nulls, required validation, duplicate guard, disable/finally recovery, retained entries, load errors, 19 safe detail fields and selected-only print invocation.",
+    "13-verify-inventory-frontend.js": "PASS: defaults/zero/null prices, integer validation, equality/null stock rules, encoded query PUT without body, duplicate guards, legacy missing-item failure, retained errors, cancel/finally recovery.",
+    "14-verify-billing-frontend.js": "PASS: all six billing cases plus decimals, five monetary payload fields, live totals/status, blank validation, duplicate guard, disable/finally retention, list errors and safe complete details.",
+    "15-verify-dashboard-frontend.js": "PASS: six cards, zero/stock states, pesos/safe text, malformed response, pending duplicate guard, loading hides stale values, error/retry/finally recovery."
+  },
+  "pip_check": "No broken requirements found.",
+  "diff_check": "passed",
+  "http_assets_origins_backups_retirement_synthetic_persistence": "passed",
+  "owned_servers_stopped": true,
+  "active_source_and_clinic_database_unchanged": true,
+  "status": "passed",
+  "rehearsal_directory": "C:\\Users\\USER\\Desktop\\BAUTRO OPTICAL CLINIC\\.setup-backups\\task16-reverify-20261121-164729",
+  "date": "2026-11-21",
+  "boundaries": [
+    "No clinic writes, migrations, restoration or record disclosure.",
+    "No new browser or native print checks in this automated rerun; prior user-confirmed preview retained.",
+    "No deployment, concurrency/load test or formal assistive-technology audit."
+  ]
+}
