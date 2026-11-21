@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-20",
+  "transport": "synthetic in-process FastAPI ASGI; no HTTP server",
+  "defaults_null_and_zero_prices_full_fields_and_blank_strings": true,
+  "null_quantity_reorder_use_orm_insert_defaults": true,
+  "server_code_and_id_create_200_code_only": true,
+  "repeated_positive_zero_negative_deltas_and_untouched_other_fields": true,
+  "query_required_integer_422_body_cannot_replace_query": true,
+  "missing_item_and_integer_id_return_200_error": true,
+  "only_three_inventory_operations_query_documented_no_body": true,
+  "fresh_process_persistence_restock_and_next_code": true,
+  "synthetic_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_match": true,
+  "limitations": [
+    "No browser/network HTTP or concurrency testing.",
+    "Zero/negative deltas and count+1 collision behavior intentionally retained.",
+    "Existing SQL NULL quantities cannot be incremented (legacy TypeError behavior)."
+  ]
+}

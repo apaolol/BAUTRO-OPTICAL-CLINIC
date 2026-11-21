@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-20",
+  "transport": "in-process ASGI through FastAPI; no HTTP server",
+  "empty_list_create_list_detail_missing": true,
+  "all_16_optional_fields_values_null_omitted_empty_strings": true,
+  "signed_optical_strings_leading_zero_axis_and_multiline_notes_preserved": true,
+  "required_patient_number_and_invalid_types_422": true,
+  "nonexistent_and_empty_patient_codes_accepted_without_patient_records": true,
+  "server_code_date_id_and_create_200_code_only": true,
+  "missing_lookup_200_null_integer_not_used_as_id": true,
+  "openapi_only_three_prescription_operations_put_delete_405": true,
+  "fresh_process_all_fields_persist_and_next_code": true,
+  "synthetic_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_match": true,
+  "limitations": [
+    "No network HTTP/browser or concurrent-create testing.",
+    "Legacy count+1 collision behavior preserved.",
+    "Inventory/billing/dashboard remain pending Tasks 07-09."
+  ]
+}

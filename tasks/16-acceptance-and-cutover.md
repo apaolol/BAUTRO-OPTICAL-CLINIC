@@ -21,6 +21,11 @@ Verify full parity before retiring legacy code.
 - [ ] Document final Python run/restore commands and dependency rationale; record unresolved limitations. No deployment. Complete all logs before claiming success.
 - [ ] Verified: final diff is intentional, all active features run without npm, existing data survives, only intended routes are exposed and rollback instructions are usable.
 
+## Chat handoff
+- Default recommendation: No next refactor task. Keep this chat for questions about final verification; use a fresh chat for a separately scoped feature.
+- After completion, include the recommendation and a brief reason in the reply; record important carryover and the recommendation under Completion Log / Deviations / notes.
+- If recommending a fresh chat, provide the exact next-task prompt from [chat-handoff.md](chat-handoff.md), with placeholders filled. Do not start or create a chat automatically.
+
 ## Completion Log (execution agent fills this in when done)
 - **Date:**
 - **Summary of what was done:**

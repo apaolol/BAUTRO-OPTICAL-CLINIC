@@ -18,6 +18,12 @@ Preserve patient list, create, search and clinical details with DOM functions.
 - [ ] Filter by name/code/contact, show counts and all clinical details, display generated patient number and reload after save. Provide simple show/hide forms/details and cancel/close behavior.
 - [ ] Verified: full/minimal create, each search key, detail values, narrow-screen table, cancel and failed-save recovery work without duplicate submission.
 
+## Chat handoff
+- Default recommendation: Keep this chat by default: the next task continues the same phase. Recommend a fresh chat if the discussion has become long or changed direction, after recording all carryover in the log.
+- Next planned task: `12-prescriptions-frontend.md` (Task 12); confirm its prerequisites and current status before recommending it.
+- After completion, include the recommendation and a brief reason in the reply; record important carryover and the recommendation under Completion Log / Deviations / notes.
+- If recommending a fresh chat, provide the exact next-task prompt from [chat-handoff.md](chat-handoff.md), with placeholders filled. Do not start or create a chat automatically.
+
 ## Completion Log (execution agent fills this in when done)
 - **Date:**
 - **Summary of what was done:**

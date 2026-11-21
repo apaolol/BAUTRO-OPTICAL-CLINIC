@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-20",
+  "table_names": [
+    "patients",
+    "prescriptions",
+    "inventory",
+    "billing",
+    "appointments",
+    "expenses"
+  ],
+  "column_counts": {
+    "patients": 24,
+    "prescriptions": 20,
+    "inventory": 10,
+    "billing": 11,
+    "appointments": 7,
+    "expenses": 7
+  },
+  "legacy_column_types_nullability_defaults_indexes_match": true,
+  "alembic_readonly_schema_diffs": [],
+  "four_create_schemas_match_legacy_json_schema": true,
+  "synthetic_in_memory_roundtrip_all_six_models": true,
+  "active_openapi_paths": {
+    "/billing/": [
+      "get",
+      "post"
+    ],
+    "/inventory/": [
+      "get",
+      "post"
+    ],
+    "/prescriptions/": [
+      "get",
+      "post"
+    ],
+    "/patients/": [
+      "get",
+      "post"
+    ],
+    "/": [
+      "get"
+    ]
+  },
+  "inactive_appointment_expense_routers_unregistered": true,
+  "generic_integer_routes_removed_from_active_routers": true,
+  "original_database_and_legacy_source_unchanged": true,
+  "server_and_lifespan_not_started": true,
+  "database_configuration_unchanged_pending_task04": true,
+  "api_business_logic_pending_tasks05_09": true
+}

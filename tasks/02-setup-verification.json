@@ -1,0 +1,33 @@
+{
+  "versions": {
+    "fastapi": "0.136.3",
+    "uvicorn": "0.48.0",
+    "sqlmodel": "0.0.50",
+    "alembic": "1.20.1",
+    "SQLAlchemy": "2.1.9",
+    "Mako": "1.4.3",
+    "MarkupSafe": "3.0.4",
+    "pydantic": "2.13.4"
+  },
+  "tool_sha256": "d29dd56f57c2f30f3f36f80634246d78870211d3ed8b9ee184aeb264ad8d2bc0",
+  "generated_files": [
+    "backend\\app\\database.py",
+    "backend\\app\\dependencies.py",
+    "backend\\app\\main.py",
+    "backend\\app\\__init__.py",
+    "backend\\app\\internal\\admin.py",
+    "backend\\app\\internal\\__init__.py",
+    "backend\\app\\models\\__init__.py",
+    "backend\\app\\routers\\__init__.py"
+  ],
+  "verification": {
+    "upstream_templates_match": true,
+    "dependency_and_package_imports": true,
+    "in_memory_sqlmodel_crud": true,
+    "legacy_source_unchanged_except_requirements": true,
+    "original_database_unchanged": true,
+    "backup_hashes_verified": true,
+    "default_database_absent": true,
+    "no_new_migration_directory": true
+  }
+}

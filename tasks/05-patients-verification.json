@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-20",
+  "transport": "in-process ASGI requests through FastAPI; no HTTP server",
+  "empty_list_create_list_detail_missing": true,
+  "all_20_optional_fields_values_explicit_null_and_omission": true,
+  "required_fields_nulls_and_invalid_age_422": true,
+  "server_code_date_and_id_override_prevention": true,
+  "create_200_code_only_and_missing_200_null": true,
+  "openapi_only_three_patient_operations": true,
+  "put_delete_405": true,
+  "fresh_process_restart_read_and_next_code": true,
+  "synthetic_sqlite_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_match": true,
+  "no_migrations_generation_or_new_dependencies": true,
+  "limitations": [
+    "No browser, network HTTP or concurrent-create test.",
+    "Legacy count+1 collision behavior retained; no schema changes.",
+    "Other API handlers remain pending Tasks 06-09."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-20",
+  "command": "python fishtool.py makerouter dashboard",
+  "tool_commit": "93d4af1aefe48bfe3fd663d323f96a576df67b67",
+  "tool_sha256": "d29dd56f57c2f30f3f36f80634246d78870211d3ed8b9ee184aeb264ad8d2bc0",
+  "generated_router_before_customization_sha256": "f1ac1a4afb772199cd7a992acc6b6ab6d86a7832a9325fcc0b74dd3d55edb375",
+  "generation_note": "Blank router written successfully; cp1252 UnicodeEncodeError printing success icon prevented automatic registration. Inspected upstream sequence and generated file, manually registered during authorized main.py customization. No force/regeneration or upstream change.",
+  "list_command": "python -X utf8 fishtool.py list",
+  "list_note": "CLI scans unregistered files too: reports 17; resolved OpenAPI confirms exactly 14 clinic operations. Appointment/Expense remain unregistered."
+}

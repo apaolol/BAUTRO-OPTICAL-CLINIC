@@ -18,6 +18,12 @@ Preserve prescription forms, details, search and printing.
 - [ ] Search by RX/patient number, show details and returned code, refresh after creation; implement selected prescription window.print with standard @media print excluding navigation/forms/other records.
 - [ ] Verified: full/minimal create, searches, error recovery and selected-record print preview preserve both eyes and lens brand/coating without a PDF dependency.
 
+## Chat handoff
+- Default recommendation: Keep this chat by default: the next task continues the same phase. Recommend a fresh chat if the discussion has become long or changed direction, after recording all carryover in the log.
+- Next planned task: `13-inventory-frontend.md` (Task 13); confirm its prerequisites and current status before recommending it.
+- After completion, include the recommendation and a brief reason in the reply; record important carryover and the recommendation under Completion Log / Deviations / notes.
+- If recommending a fresh chat, provide the exact next-task prompt from [chat-handoff.md](chat-handoff.md), with placeholders filled. Do not start or create a chat automatically.
+
 ## Completion Log (execution agent fills this in when done)
 - **Date:**
 - **Summary of what was done:**

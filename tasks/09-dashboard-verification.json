@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-20",
+  "transport": "synthetic in-process ASGI, no network server",
+  "empty_and_all_null_revenue_zero": true,
+  "seeded_counts_today_prior_null_date_negative_revenue": true,
+  "sql_sum_and_stock_comparison_parity": true,
+  "threshold_equality_null_exclusion_full_stock_records": true,
+  "all_14_resolved_operations_200_root_title_version": true,
+  "both_static_origins_simple_preflight_no_credentials_and_disallowed_origin": true,
+  "synthetic_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_match": true,
+  "limitations": [
+    "No network HTTP/browser or concurrency testing; frontend remains Tasks 10-15.",
+    "Simple aggregate queries load rows into memory as specified by Task 09."
+  ]
+}

@@ -21,12 +21,15 @@ Bautro Optical Clinic manages patients, prescriptions, inventory, billing and da
 4. Record blockers or scope changes under Deviations / notes; never silently deviate. Unresolved product questions default to compatibility. Block an action if a missing decision prevents safe data preservation.
 5. Never tick a box unless it was actually verified. Discovery does not complete execution tasks. Failed/partial checks remain unchecked.
 6. Preserve user edits and verified rollback backups. Review explicit paths before retiring old files after acceptance.
+7. At the end of every completed numbered task, include a chat recommendation in the user-facing completion reply: Keep this chat or Start a fresh chat, with one short reason. Follow the current task's Chat handoff section. If recommending fresh, include a ready-to-copy prompt with the exact next task number and filename, using tasks/chat-handoff.md. Record the recommendation and any important carryover in the Completion Log; do not rely on chat history alone.
+8. Fresh-chat recommendations are advice, not a permission gate or an instruction to create a chat. Complete all already-authorized work; if the user authorized multiple tasks, do not stop early solely for a suggested chat boundary. Give a handoff for the actual next uncompleted task when the authorized scope ends. Never start an unauthorized next task.
 
 ## Future run/test commands
 
 These commands are for execution only. None ran during planning.
 
 - From backend/: `python -m pip install -r requirements.txt` after dependency review. Record supported interpreter and resolved versions.
+- Activate the project virtual environment first (`.\.venv\Scripts\Activate.ps1` from the project root), or explicitly prepend its Scripts directory to the session PATH. FISHTOOL migration commands shell out to `alembic`; invoking only the venv Python without its Scripts on PATH is insufficient.
 - From backend/: `python fishtool.py new`, `python fishtool.py makemodel Patient` (then other names in Task 03), `python fishtool.py makerouter dashboard`. Never repeat new over customized files or use --force.
 - From backend/: `python fishtool.py serve`, equivalent to `python -m uvicorn app.main:app --reload`. Do not start before wiring the database: default startup creates app/database.db.
 - From frontend/: `python -m http.server 5500 --bind 127.0.0.1`; open `http://127.0.0.1:5500/`. No npm build/install needed.

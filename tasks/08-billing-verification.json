@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-20",
+  "transport": "synthetic in-process FastAPI ASGI; no HTTP server",
+  "empty_list_create_detail_missing_and_only_three_operations": true,
+  "paid_partial_pending_default_null_and_blank_status_payment": true,
+  "five_monetary_fields_roundtrip_no_recalculation_or_status_derivation": true,
+  "each_required_field_missing_null_wrong_type_422": true,
+  "nonexistent_empty_patient_codes_accepted_without_patient_records": true,
+  "server_id_code_date_create_200_code_only_missing_200_null": true,
+  "fresh_process_all_fields_persist_and_next_code": true,
+  "synthetic_integrity_ok": true,
+  "original_database_sha256_unchanged": "993c5c32dd068d77f0ca115fac35fe470a8689817e37fbb62cc6d8008db1e64e",
+  "baseline_backup_hashes_match": true,
+  "documentation_correction": "Five monetary fields exist in both legacy and generated schemas, not six.",
+  "limitations": [
+    "No network HTTP/browser or concurrent-create testing.",
+    "Float money and count+1 collision behavior retained.",
+    "Root/dashboard API work remains Task 09."
+  ]
+}

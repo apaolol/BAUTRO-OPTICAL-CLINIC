@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-20",
+  "rehearsal_directory": "C:\\Users\\USER\\Desktop\\BAUTRO OPTICAL CLINIC\\.setup-backups\\task04-migration-rehearsal",
+  "fresh_database_full_chain_upgrade": true,
+  "populated_copy_upgrade_rows_and_schema_unchanged": true,
+  "synthetic_rollback_to_initial_and_reupgrade": true,
+  "synthetic_rows_ids_dates_preserved": true,
+  "all_tables_indexes_lens_columns_match_sqlmodel": true,
+  "lifespan_schema_neutral_on_both_copies": true,
+  "outside_working_directory_alembic_current": true,
+  "offline_sql_generation": true,
+  "alembic_check_no_changes_both_copies": true,
+  "no_new_revision_generated": true,
+  "real_database_migrate_not_yet_run": false,
+  "environment_notes": [
+    "FISHTOOL migration commands require virtualenv Scripts on PATH; initial failed fresh attempt corrected and verified.",
+    "Sandbox asyncio socket setup stalled before lifespan execution; stopped only that rehearsal child and reran checks outside sandbox with timeouts."
+  ],
+  "real_database_existing_head_migrate_verified_noop": true,
+  "real_database_lifespan_schema_and_rows_unchanged": true,
+  "real_database_sha256_matches_task01": true,
+  "runtime_and_alembic_same_absolute_path_from_project_root": true,
+  "real_database_alembic_check_no_changes": true,
+  "legacy_revision_files_byte_identical": true,
+  "legacy_code_unchanged_except_requirements_and_alembic_ini": true,
+  "no_default_or_cwd_database_created": true
+}

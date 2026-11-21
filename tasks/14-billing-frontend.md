@@ -18,6 +18,12 @@ Preserve invoice forms, details, search and frontend calculations.
 - [ ] Use total=max(0,subtotal-discount), balance=max(0,total-paid), Paid when balance<=0 else Partial if paid>0 else Pending. Send all six monetary values, payment_method and status.
 - [ ] Verified: zero/partial/full/overpayment and excess discount match existing formulas; blank patient, search/details, saved values and failed-submit recovery work.
 
+## Chat handoff
+- Default recommendation: Keep this chat by default: the next task continues the same phase. Recommend a fresh chat if the discussion has become long or changed direction, after recording all carryover in the log.
+- Next planned task: `15-dashboard-frontend.md` (Task 15); confirm its prerequisites and current status before recommending it.
+- After completion, include the recommendation and a brief reason in the reply; record important carryover and the recommendation under Completion Log / Deviations / notes.
+- If recommending a fresh chat, provide the exact next-task prompt from [chat-handoff.md](chat-handoff.md), with placeholders filled. Do not start or create a chat automatically.
+
 ## Completion Log (execution agent fills this in when done)
 - **Date:**
 - **Summary of what was done:**

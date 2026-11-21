@@ -1,0 +1,37 @@
+{
+  "tool_commit": "93d4af1aefe48bfe3fd663d323f96a576df67b67",
+  "commands": [
+    "python fishtool.py makemodel Patient",
+    "python fishtool.py makemodel Prescription",
+    "python fishtool.py makemodel Inventory",
+    "python fishtool.py makemodel Billing",
+    "python fishtool.py makemodel Appointment",
+    "python fishtool.py makemodel Expense"
+  ],
+  "generated_before_customization": {
+    "Patient": {
+      "generated_model_sha256": "60e113480760e530fb779dbbbe0371ecff60218293fb7a96d627735d15a6fb90",
+      "generated_router_sha256": "fbee77d573522529ba9b2c7fedb084ea56ebd14e76dd3e5d008f1a38e1f8e0b6"
+    },
+    "Prescription": {
+      "generated_model_sha256": "8c67104275324b67c349b2c74a9b855b1b5636fa3cbc617d637e85241dcb970f",
+      "generated_router_sha256": "7f733cb35f2d0c1e5a1309d016f872a473f67e4c0b5ad59bf5c7982eb3c2ceaa"
+    },
+    "Inventory": {
+      "generated_model_sha256": "423e65c2d6bf7907ca1e3997d2145d206036a15ff9ee34ee3041cee89681d872",
+      "generated_router_sha256": "9d0a3c9b6fdbb2556d3eca22c5fd39b2a80125599e37e3be55c083f150302116"
+    },
+    "Billing": {
+      "generated_model_sha256": "1bc21ede43388d417ccdc929392be392e5854308dc3d13ffdc998e041f82e927",
+      "generated_router_sha256": "84d471154a19497c8d1f5c2c851a8a1fa203dfdd5c953f50b4697dbc9532d934"
+    },
+    "Appointment": {
+      "generated_model_sha256": "98f54a42612fed27f9978cc65d27fe08d4321caf33afe27d90361a7dfb0d04d5",
+      "generated_router_sha256": "fce5d1b8c176449974d05373ad1feaf95879b974e96bd45e3f3af97b9fe53a45"
+    },
+    "Expense": {
+      "generated_model_sha256": "6c3e4773af77c6f0800787b596ff914303da7b207e9bb9ab47aec7b469fec57a",
+      "generated_router_sha256": "6d6e684d6672052d39f39f28d21f6f4963279d27abbc1d06e2135e6310603a45"
+    }
+  }
+}

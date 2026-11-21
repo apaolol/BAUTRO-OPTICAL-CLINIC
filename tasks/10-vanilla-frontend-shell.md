@@ -19,6 +19,12 @@ Create course-style static pages, shared CSS and fetch helpers.
 - [ ] Use descriptive camel-case functions, textContent for user data, labeled inputs, loading/empty/error messages and submit disabling/finally recovery.
 - [ ] Verified: every direct page URL/navigation/asset/script works after refresh; backend CORS permits static origin; stopped backend shows recoverable error and no npm build is needed.
 
+## Chat handoff
+- Default recommendation: Keep this chat by default: the next task continues the same phase. Recommend a fresh chat if the discussion has become long or changed direction, after recording all carryover in the log.
+- Next planned task: `11-patients-frontend.md` (Task 11); confirm its prerequisites and current status before recommending it.
+- After completion, include the recommendation and a brief reason in the reply; record important carryover and the recommendation under Completion Log / Deviations / notes.
+- If recommending a fresh chat, provide the exact next-task prompt from [chat-handoff.md](chat-handoff.md), with placeholders filled. Do not start or create a chat automatically.
+
 ## Completion Log (execution agent fills this in when done)
 - **Date:**
 - **Summary of what was done:**
